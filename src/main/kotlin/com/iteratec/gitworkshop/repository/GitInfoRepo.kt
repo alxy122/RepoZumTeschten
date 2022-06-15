@@ -6,10 +6,9 @@ import org.springframework.stereotype.Repository
 @Repository
 class GitInfoRepo {
 
-    val endpointList: List<String> = listOf("gitCommitAmend", "gitRebase");
+    val endpointList: List<String> = listOf("gitCommitAmend", "gitCherry-Pick");
 
-    fun getInfoAmend(): CommandDescription
-    {
+    fun getInfoAmend(): CommandDescription {
         return CommandDescription(
                 "Git Commit Amend",
                 "git commit --amend",
@@ -17,12 +16,11 @@ class GitInfoRepo {
         );
     }
 
-    fun getInfoRebase(): CommandDescription
-    {
+    fun getInfoCherryPick(): CommandDescription {
         return CommandDescription(
-            "Git Rebase",
-            "git rebase <onto-branch>",
-            "Allows the user to cherry-pick all commits of the current branch to the commits of the onto-branch."
-        );
+                "Git Cherry-Pick",
+                "git cherry-pick [hash]",
+                "Given one or more existing commits, apply the change each one introduces, recording a new commit for each."
+        )
     }
 }
